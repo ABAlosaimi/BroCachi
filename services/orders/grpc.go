@@ -3,6 +3,9 @@ package orders
 import (
 	"log"
 	"net"
+
+	"github.com/ABAlosaimi/BroCachi/services/orders/handler/grpch"
+	"github.com/ABAlosaimi/BroCachi/services/orders/service"
 	"google.golang.org/grpc"
 )
 
@@ -25,6 +28,8 @@ func (s *gRPCServer) Start() error {
 	grpcServer := grpc.NewServer()
 
 	// register my services here in the grpcServer
+	orderService := service.NewOrdersService()
+	grpch.NewOrderGRPCHandler(grpcServer, orderService)
 
 	log.Printf("gRPC server has started on %s", lis.Addr())
 

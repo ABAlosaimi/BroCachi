@@ -6,5 +6,5 @@ import (
 )
 
 type OrderService interface {
- CreateOrder(context.Context, *protoGen.CreateOrderRequest) error
+ CreateOrder(context.Context, *protoGen.CreateOrderRequest) (*protoGen.CreateOrderResponse, error)
 }
