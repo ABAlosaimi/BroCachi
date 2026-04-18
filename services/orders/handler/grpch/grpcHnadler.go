@@ -13,7 +13,7 @@ type OrderGRPCHandler struct {
 	protoGen.UnimplementedOrderServiceServer
 }
 
-func NewOrderGRPCHandler(grpc *grpc.Server,orderService types.OrderService) *OrderGRPCHandler {
+func NewOrderGRPCHandler(grpc *grpc.Server, orderService types.OrderService) *OrderGRPCHandler {
 	gRPChandler := &OrderGRPCHandler{
 		orderService: orderService,
 	}
@@ -26,7 +26,7 @@ func NewOrderGRPCHandler(grpc *grpc.Server,orderService types.OrderService) *Ord
 // implement the gRPC methods here
 // this is the handler that will be registered in the gRPC server and will handle the incoming requests and call the appropriate methods in the service layer
 func (h *OrderGRPCHandler) CreateOrder(cxt context.Context, req *protoGen.CreateOrderRequest) (*protoGen.CreateOrderResponse, error) {
- 	res,err := h.orderService.CreateOrder(cxt, req)
+ 	res, err := h.orderService.CreateOrder(cxt, req)
 	if err != nil {
 		return nil, err
 	}
